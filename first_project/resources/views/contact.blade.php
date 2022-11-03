@@ -12,6 +12,6 @@
 
     </head>
     <body class="antialiased">
-        <h1>Home page</h1>
+        <h1>Contact</h1>
     </body>
 </html>
