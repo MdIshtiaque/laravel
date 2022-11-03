@@ -26,14 +26,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('Home') }}">Home</a>
+                    <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contact<span></span>class="sr-only">(current)
-                        </span>class=></a>
+                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"href="{{ route('service') }}">Service</a>
+                    <a class="nav-link" href="{{ route('service') }}">Service</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('about') }}">About</a>
