@@ -42,7 +42,7 @@
     </nav>
 
     <h2>This is Service Page</h2>
-    <p>{{ $service_id }}</p>
+    {{-- <p>{{ $service_id }}</p> --}}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
