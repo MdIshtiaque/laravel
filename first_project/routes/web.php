@@ -14,16 +14,37 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    //passing data from backend to frontend(array, compact)
+    return view('home', [
+        'page_name' => 'Home Page',
+        'name' => 'Laravel 9 course '
+    ]);
 })->name('home');
+
 Route::get('/about-us', function () {
-    return view('about');
+    return view('about', [
+        'page_name' => 'About Page'
+    ]);
 })->name('about');
+
 Route::get('/contact-us', function () {
-    return view('contact');
+    return view('contact', [
+        'page_name' => 'Contact Page',
+        'mobile' => "+8801797734294"
+    ]);
 })->name('contact');
+
 Route::get('/service-us', function () {
-    return view('service');
+    $page_name = "Service Page";
+
+    $services = [
+        'Web Design',
+        'Web Development',
+        'SEO',
+        'Digital Marketing',
+        'Graphics Design'
+    ];
+    return view('service', compact('page_name', 'services'));
 })->name('service');
 
 

@@ -1,6 +1,7 @@
 @extends('master')
 
 @section('content')
-    <h1>Contact Page</h1>
+<h1>{{ $page_name }}</h1>
+<p>contact us: {{ $mobile }}</p>
 
 @endsection

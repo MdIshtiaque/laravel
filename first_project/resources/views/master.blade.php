@@ -14,7 +14,7 @@
 <body>
     @include('include.navbar')
 
-    <div class="container">
+    <div class="container" style="margin: 0px;">
         @yield('content')
     </div>
 
