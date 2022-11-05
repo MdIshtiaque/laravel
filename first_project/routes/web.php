@@ -36,7 +36,6 @@ Route::get('/contact-us', function () {
 
 Route::get('/service-us', function () {
     $page_name = "Service Page";
-    $product_count = 12;
     $services = [
         'Web Design',
         'Web Development',
@@ -44,8 +43,30 @@ Route::get('/service-us', function () {
         'Digital Marketing',
         'Graphics Design'
     ];
-    $product = [];
-    return view('service', compact('page_name', 'services', 'product_count', 'product'));
+    $product = [
+        1 => [
+            'name' => 'Bag',
+            'color' => 'Red',
+            'price' => 1200,
+        ],
+        2 => [
+            'name' => 'Shoes',
+            'color' => 'Black',
+            'price' => 200,
+        ],
+        3 => [
+            'name' => 'Mouse',
+            'color' => 'Black',
+            'price' => 2500,
+        ],
+    ];
+
+    $product_count = count($product);
+
+    return view('service', compact('page_name',
+                                   'services',
+                                   'product_count',
+                                   'product'));
 })->name('service');
 
 

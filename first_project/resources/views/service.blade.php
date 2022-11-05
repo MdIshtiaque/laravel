@@ -3,7 +3,7 @@
 @section('content')
     <h1>{{ $page_name }}</h1>
 
-    @for ($i = 0; $i < 4; $i++)
+    @for ($i = 0; $i < count($services); $i++)
         {{ $services[$i] }}
         <br>
     @endfor
@@ -18,13 +18,25 @@
 
     @endswitch --}}
 
-    @if ($product_count <= 10)
+    {{-- @if ($product_count <= 10)
         <h1>Product is reducing.... Please Refill</h1>
     @else
         <h1>Product available : {{ $product_count }}</h1>
-    @endif
+    @endif --}}
 
-    @empty($product)
+
+
+    @forelse ($product as $key => $product)
+        <ul class="ul">
+            @if($loop -> last)
+                @continue
+            @endif
+            <li>{{ $key }}</li>
+            <li>{{ $product['name'] }}</li>
+            <li>{{ $product['color'] }}</li>
+            <li>{{ $product['price'] }}</li>
+        </ul>
+    @empty
         <p>NO DATA FOUND</p>
-    @endempty
+    @endforelse
 @endsection
