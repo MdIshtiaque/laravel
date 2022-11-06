@@ -27,15 +27,7 @@
 
 
     @forelse ($product as $key => $product)
-        <ul class="ul">
-            @if($loop -> last)
-                @continue
-            @endif
-            <li>{{ $key }}</li>
-            <li>{{ $product['name'] }}</li>
-            <li>{{ $product['color'] }}</li>
-            <li>{{ $product['price'] }}</li>
-        </ul>
+        @include('partial.partial')
     @empty
         <p>NO DATA FOUND</p>
     @endforelse
