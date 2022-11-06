@@ -8,7 +8,9 @@
 
     @include('include.bootstrap')
 
-
+    <title>
+        @yield('title')
+    </title>
 </head>
 
 <body>
