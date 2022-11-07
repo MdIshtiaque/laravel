@@ -43,7 +43,6 @@ Route::get('/', function (Request $request) {
         'page_name' => 'Home Page',
         'name' => 'Laravel 9 course '
     ]);
-
 })->name('home');
 
 Route::get('/about-us', function () {
@@ -90,17 +89,19 @@ Route::get('/service-us', function () {
     $product_count = count($product);
 
     //return json
-    return response()->json([
-        'product' => $product,
-        'product count' => $product_count,
+    // return response()->json([
+    //     'product' => $product,
+    //     'product count' => $product_count,
 
-    ]);
+    // ]);
 
-    
-    // return view('service', compact('page_name',
-    //                                'services',
-    //                                'product_count',
-    //                                'product'));
+
+    return view('service', compact(
+        'page_name',
+        'services',
+        'product_count',
+        'product'
+    ));
 })->name('service');
 
 
@@ -125,3 +126,11 @@ Route::get('/service-us', function () {
 // Route::get('/search/{anything?}', function($anything = null){
 //     echo "You have Search: ".$anything;
 // })->where('anything', '.*');
+
+//download file by returning response
+Route::get('/resume/download', function () {
+    return response()->download(
+        public_path('/resume.pdf'),
+        "My CV for Laravel 9.pdf"
+    );
+})->name('resume');
