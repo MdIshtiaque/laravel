@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+
+    dd(
+        $request->path(),
+        $request->is("/"),
+        $request->fullUrl(),
+        $request->host(),
+        $request->httpHost(),
+        $request->schemeAndHttpHost(),
+
+        $request->routeIs('home'),
+        $request->header('X-Header-Name'),
+        $request->bearerToken(),
+        $request->ip(),
+        $request->prefers(['text/html', 'application/json']),
+    );
+
+
     //passing data from backend to frontend(array, compact)
     return view('home', [
         'page_name' => 'Home Page',
