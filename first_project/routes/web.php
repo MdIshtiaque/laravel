@@ -30,7 +30,13 @@ Route::get('/', function (Request $request) {
     //     $request->ip(),
     //     $request->prefers(['text/html', 'application/json']),
     // );
-
+    // $data = [
+    //     'page_name' => 'Home Page',
+    //     'name' => 'Laravel 9 course '
+    // ];
+    // return response($data)->header('content-type', 'application/json')
+    // ->cookie('Md Emon', 'Laravel 9 course', 3600);
+    return redirect('/contact-us');
 
     //passing data from backend to frontend(array, compact)
     // return view('home', [
@@ -38,12 +44,6 @@ Route::get('/', function (Request $request) {
     //     'name' => 'Laravel 9 course '
     // ]);
 
-    $data = [
-        'page_name' => 'Home Page',
-        'name' => 'Laravel 9 course '
-    ];
-    return response($data)->header('content-type', 'application/json')
-    ->cookie('Md Emon', 'Laravel 9 course', 3600);
 })->name('home');
 
 Route::get('/about-us', function () {
