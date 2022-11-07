@@ -16,27 +16,34 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
 
-    dd(
-        $request->path(),
-        $request->is("/"),
-        $request->fullUrl(),
-        $request->host(),
-        $request->httpHost(),
-        $request->schemeAndHttpHost(),
+    // dd(
+    //     $request->path(),
+    //     $request->is("/"),
+    //     $request->fullUrl(),
+    //     $request->host(),
+    //     $request->httpHost(),
+    //     $request->schemeAndHttpHost(),
 
-        $request->routeIs('home'),
-        $request->header('X-Header-Name'),
-        $request->bearerToken(),
-        $request->ip(),
-        $request->prefers(['text/html', 'application/json']),
-    );
+    //     $request->routeIs('home'),
+    //     $request->header('X-Header-Name'),
+    //     $request->bearerToken(),
+    //     $request->ip(),
+    //     $request->prefers(['text/html', 'application/json']),
+    // );
 
 
     //passing data from backend to frontend(array, compact)
-    return view('home', [
+    // return view('home', [
+    //     'page_name' => 'Home Page',
+    //     'name' => 'Laravel 9 course '
+    // ]);
+
+    $data = [
         'page_name' => 'Home Page',
         'name' => 'Laravel 9 course '
-    ]);
+    ];
+    return response($data)->header('content-type', 'application/json')
+    ->cookie('Md Emon', 'Laravel 9 course', 3600);
 })->name('home');
 
 Route::get('/about-us', function () {
