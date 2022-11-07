@@ -36,13 +36,13 @@ Route::get('/', function (Request $request) {
     // ];
     // return response($data)->header('content-type', 'application/json')
     // ->cookie('Md Emon', 'Laravel 9 course', 3600);
-    return redirect('/contact-us');
+    //return redirect('/contact-us');
 
     //passing data from backend to frontend(array, compact)
-    // return view('home', [
-    //     'page_name' => 'Home Page',
-    //     'name' => 'Laravel 9 course '
-    // ]);
+    return view('home', [
+        'page_name' => 'Home Page',
+        'name' => 'Laravel 9 course '
+    ]);
 
 })->name('home');
 
@@ -85,13 +85,22 @@ Route::get('/service-us', function () {
             'price' => 2500,
         ],
     ];
+    $product_count = count($product);
 
     $product_count = count($product);
 
-    return view('service', compact('page_name',
-                                   'services',
-                                   'product_count',
-                                   'product'));
+    //return json
+    return response()->json([
+        'product' => $product,
+        'product count' => $product_count,
+
+    ]);
+
+    
+    // return view('service', compact('page_name',
+    //                                'services',
+    //                                'product_count',
+    //                                'product'));
 })->name('service');
 
 
