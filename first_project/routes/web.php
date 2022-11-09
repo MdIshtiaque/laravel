@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserInfoController;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Client\Request as ClientRequest;
@@ -156,3 +157,7 @@ Route::prefix('page')->name('')->group(function () {
 
     Route::get('/about', [FrontController::class, 'about'])->name('about');
 });
+
+
+Route::resource('/posts', PostController::class);
+
