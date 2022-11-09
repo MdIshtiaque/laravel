@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -139,7 +140,10 @@ Route::get('/resume/download', function () {
 
 // Grouping Routes
 Route::prefix('page')->name('')->group(function(){
-    Route::get('/home', function(){
+    Route::get('/home', function(Request $request){
+
+        dd($request->all());
+
         return view('home', [
             'page_name' => 'Home Page',
             'name' => 'Laravel 9 course '
