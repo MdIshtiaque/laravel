@@ -1,5 +1,6 @@
 <?php
 
+use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -139,8 +140,8 @@ Route::get('/resume/download', function () {
 
 
 // Grouping Routes
-Route::prefix('page')->name('')->group(function(){
-    Route::get('/home', function(Request $request){
+Route::prefix('page')->name('')->group(function () {
+    Route::get('/home', function (Request $request) {
 
         //dd($request->all());
 
@@ -148,22 +149,44 @@ Route::prefix('page')->name('')->group(function(){
             'page_name' => 'Home Page',
             'name' => 'Laravel 9 course '
         ]);
-    })->name('home')->middleware('auth');
+    })->name('home');
 
 
-    Route::get('/login', function(){
+    //get a user input and match with user_key
+    Route::get('/send-me-details', function (Request $request) {
+        $user_key = 85978;
+        $user_info = [
+            'name' => "Emon",
+            'email' => "emon123653@gmail.com",
+            'mobile' => "01797734294",
+            'Bank_acc' => "5237678453534",
+        ];
+
+        if ($user_key != $request->user_key) {
+            return response([
+                "message" => "Provide valid secret key"
+            ], 404);
+        } else {
+            return response()->json([
+                'user_info' => $user_info
+            ]);
+        }
+    })->name('send-me-details');
+
+
+    Route::get('/login', function () {
         return "Login";
     })->name('login');
 
 
-    Route::get('/contact', function(){
+    Route::get('/contact', function () {
         return view('contact', [
             'page_name' => 'Contact Page',
             'mobile' => "+8801797734294"
         ]);
     })->name('contact');
 
-    Route::get('/service', function(){
+    Route::get('/service', function () {
         $page_name = "Service Page";
         $services = [
             'Web Design',
@@ -200,7 +223,7 @@ Route::prefix('page')->name('')->group(function(){
         ));
     })->name('service');
 
-    Route::get('/about', function(){
+    Route::get('/about', function () {
         return view('about', [
             'page_name' => 'About Page'
         ]);
