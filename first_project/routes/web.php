@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\UserInfoController;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
@@ -146,7 +147,8 @@ Route::prefix('page')->name('')->group(function () {
 
 
     //get a user input and match with user_key
-    Route::get('/send-me-details', [FrontController::class, 'SendMeDetails'])->name('send-me-details');
+    //single action controller
+    Route::get('/send-me-details', UserInfoController::class)->name('send-me-details');
 
     Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 
