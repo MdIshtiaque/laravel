@@ -142,13 +142,19 @@ Route::get('/resume/download', function () {
 Route::prefix('page')->name('')->group(function(){
     Route::get('/home', function(Request $request){
 
-        dd($request->all());
+        //dd($request->all());
 
         return view('home', [
             'page_name' => 'Home Page',
             'name' => 'Laravel 9 course '
         ]);
-    })->name('home');
+    })->name('home')->middleware('auth');
+
+
+    Route::get('/login', function(){
+        return "Login";
+    })->name('login');
+
 
     Route::get('/contact', function(){
         return view('contact', [
