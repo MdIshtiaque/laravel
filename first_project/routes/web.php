@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
@@ -141,91 +142,15 @@ Route::get('/resume/download', function () {
 
 // Grouping Routes
 Route::prefix('page')->name('')->group(function () {
-    Route::get('/home', function (Request $request) {
-
-        //dd($request->all());
-
-        return view('home', [
-            'page_name' => 'Home Page',
-            'name' => 'Laravel 9 course '
-        ]);
-    })->name('home');
+    Route::get('/home', [FrontController::class, 'home'])->name('home');
 
 
     //get a user input and match with user_key
-    Route::get('/send-me-details', function (Request $request) {
-        $user_key = 85978;
-        $user_info = [
-            'name' => "Emon",
-            'email' => "emon123653@gmail.com",
-            'mobile' => "01797734294",
-            'Bank_acc' => "5237678453534",
-        ];
+    Route::get('/send-me-details', [FrontController::class, 'SendMeDetails'])->name('send-me-details');
 
-        if ($user_key != $request->user_key) {
-            return response([
-                "message" => "Provide valid secret key"
-            ], 404);
-        } else {
-            return response()->json([
-                'user_info' => $user_info
-            ]);
-        }
-    })->name('send-me-details');
+    Route::get('/contact', [FrontController::class, 'contact'])->name('contact');
 
+    Route::get('/service', [FrontController::class, 'service'])->name('service');
 
-    Route::get('/login', function () {
-        return "Login";
-    })->name('login');
-
-
-    Route::get('/contact', function () {
-        return view('contact', [
-            'page_name' => 'Contact Page',
-            'mobile' => "+8801797734294"
-        ]);
-    })->name('contact');
-
-    Route::get('/service', function () {
-        $page_name = "Service Page";
-        $services = [
-            'Web Design',
-            'Web Development',
-            'SEO',
-            'Digital Marketing',
-            'Graphics Design'
-        ];
-        $product = [
-            1 => [
-                'name' => 'Bag',
-                'color' => 'Red',
-                'price' => 1200,
-            ],
-            2 => [
-                'name' => 'Shoes',
-                'color' => 'Black',
-                'price' => 200,
-            ],
-            3 => [
-                'name' => 'Mouse',
-                'color' => 'Black',
-                'price' => 2500,
-            ],
-        ];
-        $product_count = count($product);
-
-        $product_count = count($product);
-        return view('service', compact(
-            'page_name',
-            'services',
-            'product_count',
-            'product'
-        ));
-    })->name('service');
-
-    Route::get('/about', function () {
-        return view('about', [
-            'page_name' => 'About Page'
-        ]);
-    })->name('about');
+    Route::get('/about', [FrontController::class, 'about'])->name('about');
 });
