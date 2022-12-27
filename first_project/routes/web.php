@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserInfoController;
@@ -159,5 +160,5 @@ Route::prefix('page')->name('')->group(function () {
 });
 
 
-Route::resource('/posts', PostController::class);
+Route::resource('/category', CategoryController::class);
 
