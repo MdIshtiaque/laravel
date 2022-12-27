@@ -5,6 +5,7 @@
 <div class="row">
     <div class="col-8 m-auto">
         <form action="{{ route('category.store') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="category-name">Category name</label>
                 <input type="text" class="form-control" id="category-name"
