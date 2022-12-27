@@ -6,4 +6,6 @@
     <h1>{{ $page_name }}</h1>
     <p>{{ $name }}</p>
 
+    @include('partial.db_table')
+
 @endsection
