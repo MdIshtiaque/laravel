@@ -19,7 +19,7 @@
                 placeholder="Please Provide Slug Name">
             </div>
             <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="is_active">
+                <input class="form-check-input" type="checkbox" id="flexCheckDefault" name="is_active">
                 <label class="form-check-label" for="flexCheckDefault">
                   Active/Inactive
                 </label>
