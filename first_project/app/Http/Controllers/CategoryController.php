@@ -37,6 +37,13 @@ class CategoryController extends Controller
     {
         //dd($request->all());
 
+        $request->validate([
+            'category_name' => 'required|string|alpha',
+            'slug_name' => 'required|string|alpha',
+            'is_active' => 'nullable',
+        ]);
+        
+
         Category::create([
             'name' => $request->category_name,
             'slug' => $request->slug_name,
