@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryStoreRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -33,16 +34,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
         //dd($request->all());
 
-        $request->validate([
-            'category_name' => 'required|string|alpha',
-            'slug_name' => 'required|string|alpha',
-            'is_active' => 'nullable',
-        ]);
-        
+
 
         Category::create([
             'name' => $request->category_name,
