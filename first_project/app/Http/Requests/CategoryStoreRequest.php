@@ -24,8 +24,7 @@ class CategoryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_name' => 'required|string|alpha',
-            'slug_name' => 'required|string|alpha',
+            'category_name' => 'required|string',
             'is_active' => 'nullable',
         ];
     }
