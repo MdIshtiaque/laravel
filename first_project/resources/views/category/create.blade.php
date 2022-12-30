@@ -21,7 +21,8 @@
                         class="form-control @error('category_name')
                 is-invalid
                 @enderror "
-                        id="category-name" name="category_name" placeholder="Please Provide Category Name">
+                        id="category-name" name="category_name" placeholder="Please Provide Category Name"
+                         value="{{ old('category_name') }}">
                     @error('category_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
