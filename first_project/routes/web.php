@@ -3,7 +3,9 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\UserInfoController;
+use App\Models\SubCategory;
 use GuzzleHttp\Psr7\Message;
 use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
@@ -161,4 +163,5 @@ Route::prefix('page')->name('')->group(function () {
 
 
 Route::resource('/category', CategoryController::class);
+Route::resource('/subcategory', SubCategoryController::class);
 
