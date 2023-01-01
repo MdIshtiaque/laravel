@@ -18,11 +18,11 @@
             <form action="{{ route('subcategory.store') }}" method="POST">
                 @csrf
                 <div class="select">
-                    <select class="form-select lg mt-4 mb-4 p-2" name="is_select" aria-label="Default select example">
+                    <select class="form-select lg mt-4 mb-4 p-2" name="category_id">
                         <option selected>Select Category Type</option>
-                        <option value="Accessories">Accessories</option>
-                        <option value="Phone">Phone</option>
-                        <option value="Fashion">Fashion</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">

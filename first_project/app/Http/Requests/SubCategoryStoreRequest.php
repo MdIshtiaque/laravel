@@ -24,8 +24,7 @@ class SubCategoryStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            
-            'is_select' => 'required',
+            'category_id' => 'required|numeric',
             'subcategory_name' => 'required|string',
             'is_active' => 'nullable',
         ];
