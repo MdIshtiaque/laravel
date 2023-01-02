@@ -18,11 +18,13 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subcategories = SubCategory::get(['id','name','category_id',
-    'created_at']);
+        $subcategories = SubCategory::get([
+            'id', 'name', 'category_id',
+            'created_at'
+        ]);
         //return $subcategories;
 
-        return view('subcategory.index',compact('subcategories'));
+        return view('subcategory.index', compact('subcategories'));
     }
 
     /**
@@ -32,8 +34,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::get(['id','name']);
-        return view('subcategory.create',compact('categories'));
+        $categories = Category::get(['id', 'name']);
+        return view('subcategory.create', compact('categories'));
     }
 
     /**
@@ -55,7 +57,7 @@ class SubCategoryController extends Controller
             'is_active' => $request->filled('is_active')
         ]);
 
-        Session::flash('status','Product name added successfully');
+        Session::flash('status', 'Product name added successfully');
         return back();
     }
 

@@ -3,6 +3,10 @@
 
 @section('content')
     <div class="row">
+
+        <div class="col-10 d-flex justify-content-start my-4">
+            <a href="{{ route('subcategory.index') }}" class="btn btn-success">Goto Sub Category lists</a>
+        </div>
         <div class="col-8 m-auto">
 
 

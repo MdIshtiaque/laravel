@@ -3,6 +3,9 @@
 
 @section('content')
     <div class="row">
+        <div class="col-10 d-flex justify-content-end my-4">
+            <a href="{{ route('subcategory.create') }}" class="btn btn-success">Create Sub Category</a>
+        </div>
         <div class="col-8 m-auto">
             <table class="table">
                 <thead>
