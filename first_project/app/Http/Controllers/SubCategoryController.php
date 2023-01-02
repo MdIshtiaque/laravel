@@ -59,7 +59,7 @@ class SubCategoryController extends Controller
         ]);
 
         Session::flash('status', 'Product name added successfully');
-        return back()->route('subcategory.index');
+        return redirect()->route('subcategory.index');
     }
 
     /**
