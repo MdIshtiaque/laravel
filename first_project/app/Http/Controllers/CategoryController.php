@@ -17,7 +17,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::get([
+            'id', 'name', 'slug',
+            'created_at'
+        ]);
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -72,7 +76,10 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        //dd($id);
+        $categories = Category::find($id);
+        return view('category.edit', compact('categories'));
+
     }
 
     /**
@@ -84,7 +91,18 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categories = Category::find($id);
+
+        $categories->update([
+            'name' => $request->category_name,
+            'slug' => Str::slug($request->category_name),
+            'is_active' => $request->filled('is_active')
+        ]);
+
+        Session::flash('status','Category Updated successfully');
+
+        return redirect()->route('category.index');
+
     }
 
     /**
@@ -95,6 +113,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categories = Category::find($id)->delete();
+
+        Session::flash('status','Category Deleted successfully');
+
+        return redirect()->route('category.index');
     }
 }
